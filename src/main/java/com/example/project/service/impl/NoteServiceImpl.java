@@ -1,5 +1,6 @@
 package com.example.project.service.impl;
 
+import com.example.project.dto.NoteDTO;
 import com.example.project.mapper.NoteMapper;
 import com.example.project.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,7 @@ public class NoteServiceImpl implements NoteService {
     private NoteMapper noteMapper;
 
     @Override
-    public List getNotes(Long id) {
-        System.out.println(id);
+    public List<NoteDTO> getNotes(Long id) {
         return noteMapper.getNotesByUserId(id);
     }
 }

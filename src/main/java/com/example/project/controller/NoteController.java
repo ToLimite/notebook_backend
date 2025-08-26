@@ -1,17 +1,17 @@
 package com.example.project.controller;
 
 import com.example.project.common.Result;
+import com.example.project.dto.NoteDTO;
+import com.example.project.dto.SaveDTO;
+import com.example.project.dto.vo.NoteVO;
 import com.example.project.service.NoteService;
 import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/note")
@@ -20,13 +20,24 @@ public class NoteController {
     private  NoteService noteService;
 
     @GetMapping("/{id}")
-    public Result getNotes(@Valid @PathVariable Long id){
+    public Result<List<NoteVO>> getNotes(@Valid @PathVariable Long id){
 
-        List list = noteService.getNotes(id);
-        List<Object> h = new ArrayList<>();
-        for(int i = 0; i < list.size(); i ++){
-            h.add(new Object[]{list.get(i), i});
+        List<NoteDTO> noteDTOList = noteService.getNotes(id);
+
+        List<NoteVO> voList = new ArrayList<>();
+        for(int i = 0; i < noteDTOList.size(); i ++){
+            NoteVO t = new NoteVO();
+            t.setId(noteDTOList.get(i).getId());
+            t.setText(noteDTOList.get(i).getText());
+            Long ii = (long) i;
+            t.setIndex(ii);
+            voList.add(t);
         }
-        return Result.ok(h);
+        return Result.ok(voList);
+    }
+
+    @PostMapping("/{id}")
+    public Result saveNotes(@Valid @PathVariable Long id, @RequestBody SaveDTO pyLoad){
+        return null;
     }
 }
