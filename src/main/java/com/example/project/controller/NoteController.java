@@ -7,7 +7,6 @@ import com.example.project.dto.vo.NoteVO;
 import com.example.project.service.NoteService;
 import jakarta.validation.Valid;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
