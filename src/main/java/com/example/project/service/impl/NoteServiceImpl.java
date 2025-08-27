@@ -1,6 +1,7 @@
 package com.example.project.service.impl;
 
 import com.example.project.dto.NoteDTO;
+import com.example.project.dto.SaveDTO;
 import com.example.project.mapper.NoteMapper;
 import com.example.project.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,12 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public List<NoteDTO> getNotes(Long id) {
         return noteMapper.getNotesByUserId(id);
+    }
+
+    @Override
+    public void saveNotes(SaveDTO pyLoad) {
+        Long id = pyLoad.getId();
+        String text = pyLoad.getText();
+        noteMapper.save(id, text);
     }
 }

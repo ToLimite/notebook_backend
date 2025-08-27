@@ -36,8 +36,9 @@ public class NoteController {
         return Result.ok(voList);
     }
 
-    @PostMapping("/{id}")
-    public Result saveNotes(@Valid @PathVariable Long id, @RequestBody SaveDTO pyLoad){
-        return null;
+    @PostMapping("/save")
+    public Result saveNotes(@Valid @RequestBody SaveDTO pyLoad){
+        noteService.saveNotes(pyLoad);
+        return Result.ok();
     }
 }
