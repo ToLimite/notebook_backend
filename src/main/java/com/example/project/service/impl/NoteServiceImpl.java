@@ -26,4 +26,9 @@ public class NoteServiceImpl implements NoteService {
         String text = pyLoad.getText();
         noteMapper.save(id, text);
     }
+
+    @Override
+    public void addNotes(Long id) {
+        noteMapper.add(id);
+    }
 }

@@ -17,5 +17,8 @@ public interface NoteMapper {
     @Update("update notes set text = #{text} where id = #{id}")
     void save(Long id, String text);
 
+    @Insert("insert into notes (text, user_id) values ('新建笔记', #{id})")
+    void add(Long id);
+
     //    @Insert("insert into notes (text, user_id) values (#{text}, #{id})")
 }

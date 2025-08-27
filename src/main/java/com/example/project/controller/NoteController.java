@@ -41,4 +41,10 @@ public class NoteController {
         noteService.saveNotes(pyLoad);
         return Result.ok();
     }
+
+    @GetMapping("/add/{id}")
+    public Result addNotes(@Valid @PathVariable Long id){
+        noteService.addNotes(id);
+        return Result.ok();
+    }
 }
