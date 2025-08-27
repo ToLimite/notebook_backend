@@ -2,10 +2,7 @@ package com.example.project.mapper;
 
 import com.example.project.dto.NoteDTO;
 import com.example.project.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,6 +16,9 @@ public interface NoteMapper {
 
     @Insert("insert into notes (text, user_id) values ('新建笔记', #{id})")
     void add(Long id);
+
+    @Delete("delete from notes where id = #{id}")
+    void del(Long id);
 
     //    @Insert("insert into notes (text, user_id) values (#{text}, #{id})")
 }

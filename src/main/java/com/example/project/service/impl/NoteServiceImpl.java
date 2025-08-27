@@ -31,4 +31,9 @@ public class NoteServiceImpl implements NoteService {
     public void addNotes(Long id) {
         noteMapper.add(id);
     }
+
+    @Override
+    public void delNotes(Long id) {
+        noteMapper.del(id);
+    }
 }

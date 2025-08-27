@@ -7,6 +7,7 @@ import com.example.project.dto.vo.NoteVO;
 import com.example.project.service.NoteService;
 import jakarta.validation.Valid;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,12 @@ public class NoteController {
     @GetMapping("/add/{id}")
     public Result addNotes(@Valid @PathVariable Long id){
         noteService.addNotes(id);
+        return Result.ok();
+    }
+
+    @DeleteMapping("/del/{id}")
+    public Result delNotes(@Valid @PathVariable Long id){
+        noteService.delNotes(id);
         return Result.ok();
     }
 }

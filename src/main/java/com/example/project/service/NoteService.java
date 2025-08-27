@@ -13,4 +13,6 @@ public interface NoteService {
     void saveNotes(SaveDTO pyLoad);
 
     void addNotes(@Valid Long id);
+
+    void delNotes(@Valid Long id);
 }
